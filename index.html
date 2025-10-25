@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Do you love me?</title>
+
+<!-- Press Start 2P Pixel Font -->
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --pink:#ff7bbf;
+    --white:#ffffff;
+    --text:#000000;
+  }
+
+  html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Press Start 2P", cursive;
+  background: #ff7bbf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  overflow: hidden;
+}
+body {
+  background-color: #ff7bbf;
+}
+.card {
+  width: 90vw;
+  max-width: 450px;
+}
+
+  }
+
+  body{
+    background-image:url('https://i.imgur.com/Jxq5G9o.png');
+    background-size:cover;
+    background-position: center;
+  }
+
+  .container{
+    background:rgba(255,255,255,0.85);
+    padding:40px 20px;
+    border-radius:12px;
+    border:4px solid #ff4fa4;
+    width:min(500px,90vw);
+  }
+
+  h1{
+    font-size:18px;
+    margin-bottom:22px;
+    color:var(--text);
+  }
+
+  p{
+    font-size:12px;
+    line-height:1.4;
+    margin:0 0 26px 0;
+    color:var(--text);
+  }
+
+  .btn-row{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+  }
+
+  button{
+    font-family: inherit;
+    font-size:12px;
+    padding:14px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    border:3px solid #000;
+    background:#ffd6eb;
+    transition:transform .22s;
+  }
+
+  #yesBtn{
+    background:#ff4fa4;
+    color:#fff;
+  }
+
+  #noBtn{
+    color:#000;
+  }
+
+  #finalScreen{
+    display:none;
+  }
+
+  .gif{
+    width:200px;
+    margin-top:18px;
+    image-rendering:pixelated;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div id="mainScreen">
+    <h1>Do you love me?</h1>
+    <p>jootey maaroon gee ghalat kiya toh</p>
+
+    <div class="btn-row">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+  </div>
+
+  <div id="finalScreen">
+    <h1>Loser aah simp</h1>
+    <img id="loveGif" class="gif" src="./love.gif.gif" alt="Cute gif">
+
+
+  </div>
+
+</div>
+
+<script>
+const noMessages = [
+  "Seriously.",
+  "Zain Wasim. Stop.",
+  "kys.",
+  "Wrong button.",
+  "WHEN I CATCH YOU ZAIN WASIM."
+];
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const mainScreen = document.getElementById("mainScreen");
+const finalScreen = document.getElementById("finalScreen");
+const loveGif = document.getElementById("loveGif");
+
+let noIndex = 0;
+
+noBtn.addEventListener("click", ()=>{
+  noBtn.textContent = noMessages[noIndex];
+  noIndex = (noIndex + 1) % noMessages.length;
+
+  yesBtn.style.transform = 
+    `scale(${1 + Math.min(0.8, noIndex*0.18)})`;
+});
+
+yesBtn.addEventListener("click", ()=>{
+  mainScreen.style.display="none";
+  finalScreen.style.display="block";
+});
+</script>
+
+</body>
+</html>
